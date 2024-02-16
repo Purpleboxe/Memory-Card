@@ -1,0 +1,41 @@
+:root {
+  --black: #2c4251;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url(../assets/fonts/Poppins-Regular.ttf);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1.2rem;
+  border-bottom: solid 2px var(--black);
+  color: var(--black);
+}
+
+h1 {
+  margin: 0;
+}
+
+.scores {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  text-transform: uppercase;
+}

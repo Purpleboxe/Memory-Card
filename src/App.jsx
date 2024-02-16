@@ -1,5 +1,13 @@
+import Header from "./components/Header.jsx";
+import Game from "./components/Game.jsx";
+
 function App() {
-  return <h1>Memory Card</h1>;
+  return (
+    <>
+      <Header />
+      <Game />
+    </>
+  );
 }
 
 export default App;
