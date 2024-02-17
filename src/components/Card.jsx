@@ -1,10 +1,18 @@
-function Card(props) {
-  const { image } = props;
+function Card({ id, image, onClick, className }) {
+  const isDisabled = className.includes("disabled");
+
+  const click = () => {
+    onClick(id);
+  };
 
   return (
-    <div className="card">
-      <img src={image} alt="card" />
-    </div>
+    <button
+      className={`card ${className}`}
+      onClick={click}
+      disabled={isDisabled}
+    >
+      <img className={className} src={image} alt="card" />
+    </button>
   );
 }
 
