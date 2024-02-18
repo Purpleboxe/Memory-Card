@@ -10,6 +10,12 @@ function Game() {
   const [clickedCards, setClickedCards] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [won, setWon] = useState(false);
+
+  const num = 12;
+
+  const overlay = document.querySelector(".overlay");
+  const winPopup = document.querySelector(".win");
 
   async function shuffleCards() {
     setIsShuffling(true);
@@ -31,15 +37,19 @@ function Game() {
     }, 1000);
   }
 
+  const win = () => {
+    overlay.classList.add("active");
+    winPopup.classList.add("active");
+
+    setWon(true);
+  };
+
   const handleCardClick = (id) => {
     if (!clickedCards.includes(id)) {
       setScore((prev) => prev + 1);
       setClickedCards((prev) => [...prev, id]);
     } else {
-      if (score >= highScore) {
-        setHighScore(score);
-      }
-      setScore((prev) => prev - prev);
+      setScore(0);
       setClickedCards([]);
     }
 
@@ -70,9 +80,27 @@ function Game() {
   }
 
   useEffect(() => {
-    const num = 12;
     initializeCards(num);
   }, []);
+
+  useEffect(() => {
+    if (score >= highScore) {
+      setHighScore(score);
+    }
+
+    if (clickedCards.length === num) {
+      win();
+    }
+  }, [score, highScore, clickedCards]);
+
+  const playAgain = () => {
+    setScore(0);
+    setClickedCards([]);
+    setWon(false);
+    initializeCards(num);
+    overlay.classList.remove("active");
+    winPopup.classList.remove("active");
+  };
 
   return (
     <>
@@ -84,9 +112,17 @@ function Game() {
             id={card.id}
             image={card.image}
             onClick={handleCardClick}
-            className={isShuffling ? "flip disabled" : ""}
+            className={isShuffling || won ? "disabled" : ""}
+            flip={isShuffling ? "flip" : ""}
           />
         ))}
+      </div>
+      <div className="popup">
+        <div className="win">
+          <h2>You Win!</h2>
+          <button onClick={playAgain}>Play Again</button>
+        </div>
+        <div className="overlay"></div>
       </div>
     </>
   );

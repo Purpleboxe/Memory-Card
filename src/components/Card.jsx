@@ -1,4 +1,4 @@
-function Card({ id, image, onClick, className }) {
+function Card({ id, image, onClick, className, flip }) {
   const isDisabled = className.includes("disabled");
 
   const click = () => {
@@ -7,11 +7,15 @@ function Card({ id, image, onClick, className }) {
 
   return (
     <button
-      className={`card ${className}`}
+      className={`card ${className} ${flip ? "flip" : ""}`}
       onClick={click}
       disabled={isDisabled}
     >
-      <img className={className} src={image} alt="card" />
+      <img
+        className={`${className} ${flip ? "flip" : ""}`}
+        src={image}
+        alt="card"
+      />
     </button>
   );
 }
