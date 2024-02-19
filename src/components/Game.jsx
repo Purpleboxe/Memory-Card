@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 import "../styles/game.css";
 import Header from "./Header.jsx";
@@ -56,7 +57,7 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
   };
 
   async function fetchRandomGif(i) {
-    const apiKey = "cYHABlTemchmA3WrEL47d2bMx52muTvl";
+    const apiKey = process.env.GIPHY_API;
     const url = `https://api.giphy.com/v1/stickers/search?q=emoji&api_key=${apiKey}`;
 
     try {
