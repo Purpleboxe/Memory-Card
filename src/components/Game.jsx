@@ -61,7 +61,7 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
     const url = `https://api.giphy.com/v1/stickers/search?q=emoji&api_key=${apiKey}`;
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, { mode: "cors" });
       const data = await response.json();
       return data.data[i].images.fixed_height.url;
     } catch (error) {
