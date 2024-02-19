@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Game from "./components/Game.jsx";
 import Menu from "./components/Menu.jsx";
 
 function App() {
   const [game, setGame] = useState(false);
   const [numCards, setNumCards] = useState(5);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState(() => {
+    const storedHighScore = localStorage.getItem("highScore");
+    return storedHighScore;
+  });
 
   const start = (numCards) => {
     setNumCards(numCards);
@@ -20,6 +23,10 @@ function App() {
     setHighScore(score);
   };
 
+  useEffect(() => {
+    localStorage.setItem("highScore", highScore);
+  }, [highScore]);
+
   return (
     <>
       {game ? (
@@ -30,7 +37,7 @@ function App() {
           updateHighScore={updateHighScore}
         />
       ) : (
-        <Menu start={start} />
+        <Menu start={start} highScore={highScore} />
       )}
     </>
   );

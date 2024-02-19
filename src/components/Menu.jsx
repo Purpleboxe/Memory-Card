@@ -1,6 +1,6 @@
 import "../styles/menu.css";
 
-function Menu({ start }) {
+function Menu({ start, highScore }) {
   const handleStart = (difficulty) => {
     let num;
     switch (difficulty) {
@@ -11,10 +11,10 @@ function Menu({ start }) {
         num = 12;
         break;
       case "hard":
-        num = 22;
+        num = 26;
         break;
       case "expert":
-        num = 35;
+        num = 40;
         break;
     }
 
@@ -40,6 +40,7 @@ function Menu({ start }) {
             Expert
           </button>
         </div>
+        <strong>High Score: {highScore}</strong>
       </div>
     </>
   );
