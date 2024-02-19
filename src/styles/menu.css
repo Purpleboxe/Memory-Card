@@ -1,0 +1,49 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  color: var(--black);
+  font-size: 2rem;
+}
+
+.menu-btns {
+  margin-top: 2rem;
+}
+
+.menu-btns button {
+  background-color: transparent;
+  margin: 10px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.1s ease;
+}
+
+.menu-btns button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.easy {
+  color: #45b17e;
+  border: 2px solid #45b17e;
+}
+
+.normal {
+  color: #e5b208;
+  border: 2px solid #e5b208;
+}
+
+.hard {
+  color: #ef233c;
+  border: 2px solid #ef233c;
+}
+
+.expert {
+  color: #6e44ff;
+  border: 2px solid #6e44ff;
+}

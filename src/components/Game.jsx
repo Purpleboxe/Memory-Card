@@ -4,15 +4,12 @@ import Header from "./Header.jsx";
 import Card from "./Card.jsx";
 import { useState, useEffect } from "react";
 
-function Game() {
+function Game({ numCards, menu, highScore, updateHighScore }) {
   const [cards, setCards] = useState([]);
   const [isShuffling, setIsShuffling] = useState(false);
   const [clickedCards, setClickedCards] = useState([]);
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
   const [won, setWon] = useState(false);
-
-  const num = 12;
 
   const overlay = document.querySelector(".overlay");
   const winPopup = document.querySelector(".win");
@@ -70,9 +67,9 @@ function Game() {
     }
   }
 
-  async function initializeCards(num) {
+  async function initializeCards(numCards) {
     const newCards = [];
-    for (let i = 0; i < num; i++) {
+    for (let i = 0; i < numCards; i++) {
       const url = await fetchRandomGif(i);
       newCards.push({ id: i, image: url });
     }
@@ -80,15 +77,15 @@ function Game() {
   }
 
   useEffect(() => {
-    initializeCards(num);
+    initializeCards(numCards);
   }, []);
 
   useEffect(() => {
     if (score >= highScore) {
-      setHighScore(score);
+      updateHighScore(score);
     }
 
-    if (clickedCards.length === num) {
+    if (clickedCards.length === numCards) {
       win();
     }
   }, [score, highScore, clickedCards]);
@@ -97,14 +94,14 @@ function Game() {
     setScore(0);
     setClickedCards([]);
     setWon(false);
-    initializeCards(num);
+    initializeCards(numCards);
     overlay.classList.remove("active");
     winPopup.classList.remove("active");
   };
 
   return (
     <>
-      <Header score={score} highScore={highScore} />
+      <Header score={score} highScore={highScore} menu={menu} />
       <div className="cardGrid">
         {cards.map((card) => (
           <Card
@@ -120,6 +117,7 @@ function Game() {
       <div className="popup">
         <div className="win">
           <h2>You Win!</h2>
+          <button onClick={menu}>Menu</button>
           <button onClick={playAgain}>Play Again</button>
         </div>
         <div className="overlay"></div>

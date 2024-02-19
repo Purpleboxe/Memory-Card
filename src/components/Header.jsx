@@ -1,7 +1,15 @@
-function Header({ score, highScore }) {
+function Header({ score, highScore, menu }) {
+  const keyPress = (event) => {
+    if (event.key === "Enter") {
+      menu();
+    }
+  };
+
   return (
     <header>
-      <h1>Memory Card</h1>
+      <h1 onClick={menu} onKeyDown={keyPress} tabIndex={0}>
+        Memory Card
+      </h1>
       <div className="scores">
         <div className="score">
           Current Score

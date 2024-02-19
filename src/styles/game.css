@@ -3,13 +3,14 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
-  margin: 50px 200px;
+  margin: 150px 200px;
 }
 
 .card {
   display: flex;
   justify-content: center;
-  width: 150px;
+  min-width: 100px;
+  max-width: 150px;
   height: 250px;
   border: 2px solid var(--black);
   border-radius: 10px;

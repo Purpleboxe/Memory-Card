@@ -3,23 +3,32 @@
 }
 
 @font-face {
-  font-family: Poppins;
-  src: url(../assets/fonts/Poppins-Regular.ttf);
+  font-family: Roboto;
+  src: url(../assets/fonts/Roboto-Regular.ttf);
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
   background: rgb(242, 242, 242);
 }
 
 header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   padding: 1.2rem;
   border-bottom: solid 2px var(--black);
   color: var(--black);
+  background-color: rgb(242, 242, 242);
+  z-index: 1;
+}
+
+header h1 {
+  cursor: pointer;
 }
 
 h1 {
@@ -52,7 +61,7 @@ h2 {
   left: 0;
   width: 200%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .overlay.active {
@@ -90,7 +99,7 @@ h2 {
 .win button:hover {
   background-color: #564e58;
   transform: translateY(-2px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
 .win.active {
