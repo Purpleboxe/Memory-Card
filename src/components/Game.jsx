@@ -2,6 +2,7 @@
 import "../styles/game.css";
 import Header from "./Header.jsx";
 import Card from "./Card.jsx";
+import Confetti from "./Confetti.js";
 import { useState, useEffect } from "react";
 
 function Game({ numCards, menu, highScore, updateHighScore }) {
@@ -37,6 +38,7 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
   const win = () => {
     overlay.classList.add("active");
     winPopup.classList.add("active");
+    Confetti();
 
     setWon(true);
   };
@@ -121,6 +123,7 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
           <button onClick={playAgain}>Play Again</button>
         </div>
         <div className="overlay"></div>
+        <div className="canvas-confetti"></div>
       </div>
     </>
   );
