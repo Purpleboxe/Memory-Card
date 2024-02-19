@@ -57,7 +57,7 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
   };
 
   async function fetchRandomGif(i) {
-    const apiKey = process.env.GIPHY_API;
+    const apiKey = import.meta.env.VITE_GIPHY_API;
     const url = `https://api.giphy.com/v1/stickers/search?q=emoji&api_key=${apiKey}`;
 
     try {
