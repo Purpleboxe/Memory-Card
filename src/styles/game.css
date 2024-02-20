@@ -52,6 +52,12 @@
   pointer-events: none;
 }
 
+.loading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--black);
+}
+
 @keyframes flip {
   0% {
     transform: rotateY(0deg);

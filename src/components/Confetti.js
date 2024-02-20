@@ -11,7 +11,7 @@ function Confetti() {
   canvas.height = 900;
   confettiCanvas.appendChild(canvas);
   createConfetti({
-    particleCount: 800,
+    particleCount: 600,
     spread: 200,
     gravity: 2,
   }).then(() => confettiCanvas.removeChild(canvas));

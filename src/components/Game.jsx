@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 import "../styles/game.css";
 import Header from "./Header.jsx";
@@ -12,6 +11,7 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
   const [clickedCards, setClickedCards] = useState([]);
   const [score, setScore] = useState(0);
   const [won, setWon] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const overlay = document.querySelector(".overlay");
   const winPopup = document.querySelector(".win");
@@ -63,6 +63,7 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
     try {
       const response = await fetch(url, { mode: "cors" });
       const data = await response.json();
+      setLoading(true);
       return data.data[i].images.fixed_height.url;
     } catch (error) {
       console.error("Error fetching GIF:", error);
@@ -77,6 +78,7 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
       newCards.push({ id: i, image: url });
     }
     setCards(newCards);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -116,6 +118,8 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
             flip={isShuffling ? "flip" : ""}
           />
         ))}
+
+        {loading ? <div className="loading">Loading...</div> : null}
       </div>
       <div className="popup">
         <div className="win">

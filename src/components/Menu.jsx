@@ -25,6 +25,8 @@ function Menu({ start, highScore }) {
     <>
       <div className="menu">
         <h1>Memory Card</h1>
+        <div>Avoid duplicate cards</div>
+        <br />
         <div>Choose your difficulty!</div>
         <div className="menu-btns">
           <button className="easy" onClick={() => handleStart("easy")}>
@@ -40,7 +42,7 @@ function Menu({ start, highScore }) {
             Expert
           </button>
         </div>
-        <strong>High Score: {highScore}</strong>
+        <strong>High Score: {highScore > 0 ? highScore : "0"}</strong>
       </div>
     </>
   );
