@@ -29,18 +29,18 @@
 }
 
 .easy {
-  color: #45b17e;
-  border: 2px solid #45b17e;
+  color: #2b825a;
+  border: 2px solid #2b825a;
 }
 
 .normal {
-  color: #e5b208;
-  border: 2px solid #e5b208;
+  color: #8b6a00;
+  border: 2px solid #80691e;
 }
 
 .hard {
-  color: #ef233c;
-  border: 2px solid #ef233c;
+  color: #da1028;
+  border: 2px solid #da1028;
 }
 
 .expert {
