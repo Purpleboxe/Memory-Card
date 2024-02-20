@@ -59,11 +59,10 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
   async function fetchRandomGif(i) {
     const apiKey = import.meta.env.VITE_GIPHY_API;
     const url = `https://api.giphy.com/v1/stickers/search?q=emoji&api_key=${apiKey}`;
-
+    setLoading(true);
     try {
       const response = await fetch(url, { mode: "cors" });
       const data = await response.json();
-      setLoading(true);
       return data.data[i].images.fixed_height.url;
     } catch (error) {
       console.error("Error fetching GIF:", error);
@@ -108,18 +107,21 @@ function Game({ numCards, menu, highScore, updateHighScore }) {
     <>
       <Header score={score} highScore={highScore} menu={menu} />
       <div className="cardGrid">
-        {cards.map((card) => (
-          <Card
-            key={card.id}
-            id={card.id}
-            image={card.image}
-            onClick={handleCardClick}
-            className={isShuffling || won ? "disabled" : ""}
-            flip={isShuffling ? "flip" : ""}
-          />
-        ))}
-
-        {loading ? <div className="loading">Loading...</div> : null}
+        {" "}
+        {loading ? (
+          <div className="loading">Loading...</div>
+        ) : (
+          cards.map((card) => (
+            <Card
+              key={card.id}
+              id={card.id}
+              image={card.image}
+              onClick={handleCardClick}
+              className={isShuffling || won ? "disabled" : ""}
+              flip={isShuffling ? "flip" : ""}
+            />
+          ))
+        )}
       </div>
       <div className="popup">
         <div className="win">

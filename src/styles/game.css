@@ -53,9 +53,15 @@
 }
 
 .loading {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 2rem;
   font-weight: bold;
   color: var(--black);
+  z-index: 1;
 }
 
 @keyframes flip {
